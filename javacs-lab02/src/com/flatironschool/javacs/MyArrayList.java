@@ -63,13 +63,16 @@ public class MyArrayList<E> implements List<E> {
 			throw new IndexOutOfBoundsException();
 		}
        
+      //Expand the list by readding the last element
       add(get(size - 1));
       
+      //Loop and shift all elements one to the right
       for( int iter = size - 2; iter > index; iter-- )
       {
          set(iter, get(iter - 1));
       }
 		
+      //Add element in right spot
       set(index, element);
 	}
 
@@ -200,13 +203,17 @@ public class MyArrayList<E> implements List<E> {
 
 	@Override
 	public E remove(int index) {
-		E toReturn = get(index);
+		
+      //Local Variable to story the deleted item
+      E toReturn = get(index);
 
+      //Loop to shift the items over
       for( int iter = index; iter < size - 1; iter++ )
       {
          set(iter, get(iter + 1));
       }
       
+      //Decrement the size of the list
       size--;
 		return toReturn;
 	}
